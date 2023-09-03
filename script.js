@@ -25,7 +25,13 @@ async function result() {
     document.getElementById("maindiv").appendChild(div);
     for (let data of res.data) {
       const div = document.createElement("p");
-      div.innerHTML = "Temp: " + data.temp + " Date: " + data.datetime;
+      div.innerHTML =
+        "Temp: " +
+        data.temp +
+        " Date: " +
+        data.datetime +
+        " Description: " +
+        data.weather.description;
       document.getElementById("maindiv").appendChild(div);
     }
   } catch (err) {
@@ -53,7 +59,13 @@ function currentlocation() {
           document.getElementById("maindiv").appendChild(div);
           for (let data of response.data) {
             const div = document.createElement("p");
-            div.innerHTML = "Temp: " + data.temp + "  Date: " + data.datetime;
+            div.innerHTML =
+              "Temp: " +
+              data.temp +
+              "  Date: " +
+              data.datetime +
+              "  Description: " +
+              data.weather.description;
             document.getElementById("maindiv").appendChild(div);
           }
         });
