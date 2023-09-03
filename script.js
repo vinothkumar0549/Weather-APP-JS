@@ -1,29 +1,37 @@
-function result() {
-  let city = document.querySelector("#cityName").value;
-  if (city === "") {
-    alert("Enter the City Name...");
-    return;
-  }
-  fetch(
-    `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&days=7&key=34d92fae5c9a4c34905b68ee125a90cc`
-  )
-    .then((response) => response.json())
-    .then((response) => {
+async function result() {
+  try {
+    let city = document.querySelector("#cityName").value;
+    if (city === "") {
+      alert("Enter the City Name...");
+      return;
+    }
+    let res = await fetch(
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&days=7&key=34d92fae5c9a4c34905b68ee125a90cc`
+    );
+    res = await res.json();
+    if (res.city_name.length != city.length) {
+      alert("Enter the Correct City Name...");
+      document.getElementById("cityName").value = "";
+      return;
+    }
+    const div = document.createElement("p");
+    div.innerHTML =
+      "City: " +
+      res.city_name +
+      " Latitude: " +
+      res.lat +
+      " Longitude: " +
+      res.lon;
+    document.getElementById("maindiv").appendChild(div);
+    for (let data of res.data) {
       const div = document.createElement("p");
-      div.innerHTML =
-        response.city_name +
-        "Latitude: " +
-        response.lat +
-        "Longitude: " +
-        response.lon;
+      div.innerHTML = "Temp: " + data.temp + " Date: " + data.datetime;
       document.getElementById("maindiv").appendChild(div);
-      for (let data of response.data) {
-        const div = document.createElement("p");
-        div.innerHTML = "Temp: " + data.temp + " Date: " + data.datetime;
-        document.getElementById("maindiv").appendChild(div);
-      }
-    })
-    .catch((err) => alert("Error Occured"));
+    }
+  } catch (err) {
+    alert("Error Occured");
+  }
+  document.getElementById("cityName").value = "";
 }
 
 function currentlocation() {
@@ -45,7 +53,7 @@ function currentlocation() {
           document.getElementById("maindiv").appendChild(div);
           for (let data of response.data) {
             const div = document.createElement("p");
-            div.innerHTML = "Temp: " + data.temp + " Date: " + data.datetime;
+            div.innerHTML = "Temp: " + data.temp + "  Date: " + data.datetime;
             document.getElementById("maindiv").appendChild(div);
           }
         });
