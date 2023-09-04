@@ -6,7 +6,7 @@ async function result() {
       return;
     }
     let res = await fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&days=7&key=34d92fae5c9a4c34905b68ee125a90cc`
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&days=7&key=79dd552789a842ce80a52ee08423af8f`
     );
     res = await res.json();
     if (res.city_name.length != city.length) {
@@ -41,7 +41,9 @@ async function result() {
   } catch (err) {
     alert("Error Occured");
   }
-  document.getElementById("cityName").value = "";
+  document.getElementById("cityName").style.display = "none";
+  document.getElementById("currentlocation").style.display = "none";
+  document.getElementById("result").style.display = "none";
 }
 
 function currentlocation() {
@@ -55,7 +57,7 @@ function currentlocation() {
         document.getElementById("maindiv").appendChild(lat);
         document.getElementById("maindiv").appendChild(lon);
         fetch(
-          `https://api.weatherbit.io/v2.0/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&days=7&key=34d92fae5c9a4c34905b68ee125a90cc`
+          `https://api.weatherbit.io/v2.0/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&days=7&key=79dd552789a842ce80a52ee08423af8f`
         )
           .then((response) => response.json())
           .then((response) => {
@@ -84,4 +86,11 @@ function currentlocation() {
   } else {
     alert("Sorry for the Inconvienece");
   }
+  document.getElementById("cityName").style.display = "none";
+  document.getElementById("currentlocation").style.display = "none";
+  document.getElementById("result").style.display = "none";
+}
+
+function reset() {
+  location.reload();
 }
