@@ -44,6 +44,7 @@ async function result() {
   document.getElementById("cityName").style.display = "none";
   document.getElementById("currentlocation").style.display = "none";
   document.getElementById("result").style.display = "none";
+  document.getElementById("reset").style.display = "block";
 }
 
 function currentlocation() {
@@ -89,6 +90,7 @@ function currentlocation() {
   document.getElementById("cityName").style.display = "none";
   document.getElementById("currentlocation").style.display = "none";
   document.getElementById("result").style.display = "none";
+  document.getElementById("reset").style.display = "block";
 }
 
 function reset() {
