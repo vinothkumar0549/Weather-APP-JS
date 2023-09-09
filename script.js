@@ -44,10 +44,10 @@ async function result() {
         " Description: " +
         data.weather.description;
       noofdays += 1;
-      // let days = data.weather.icon;
-      // const img = document.createElement("img");
-      // img.src = `./icons/${days}.png`;
-      // div.appendChild(img);
+      let days = data.weather.icon;
+      const img = document.createElement("img");
+      img.src = `./icons/${days}.png`;
+      div.appendChild(img);
       document.getElementById("maindiv").appendChild(div);
     }
   } catch (err) {
@@ -97,10 +97,10 @@ function currentlocation() {
                 "  Description: " +
                 data.weather.description;
               noofdays += 1;
-              // let days = data.weather.icon;
-              // const img = document.createElement("img");
-              // img.src = `./icons/${days}.png`;
-              // div.appendChild(img);
+              let days = data.weather.icon;
+              const img = document.createElement("img");
+              img.src = `./icons/${days}.png`;
+              div.appendChild(img);
               document.getElementById("maindiv").appendChild(div);
             }
           });
